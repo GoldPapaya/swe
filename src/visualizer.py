@@ -67,7 +67,7 @@ try:
 except ValueError as e:
     print(f"Shapefile error (provinceboundaries): {e}")
 
-plt.title('SWE Map (Feb 2, 2017)')
+plt.title('SWE Map')
 plt.show()
 
 dataset.close()
