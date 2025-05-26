@@ -7,11 +7,14 @@ import cartopy.io.shapereader as shpreader
 import csv
 import glob
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # File paths
-nc_pattern = 'visualizer_input/swemap/2000_2001/*.nc' # Process NetCDF files in bulk
-shp_file = 'visualizer_input/mask/southernontariomask.shp'  # Red polygon mask
-csv_file = 'swe_summary/swe_summary.csv'  # Output CSV file
+nc_pattern = os.getenv("NC_PATTERN") # (*Important*) input file path format: "file_input/data_range/*.nc"
+shp_file = os.getenv("SHP_FILE") # Polygon mask
+csv_file = os.getenv("CSV_FILE")  # Output .csv file
 
 # Load the red polygon shapefile once
 shp_reader = shpreader.Reader(shp_file)

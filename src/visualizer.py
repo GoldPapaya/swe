@@ -3,10 +3,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 import cartopy.io.shapereader as shpreader
+import os
+from dotenv import load_dotenv
 
-nc_file = 'C:/Users/lucas/.vscode/swe/visualizer_input/swemap/2016_2017/20170201_northern_hemisphere_swe_0.25grid.nc'
-shp_file = 'C:/Users/lucas/.vscode/swe/visualizer_input/mask/southernontariomask.shp'  # Optional
-prov_file = 'C:/Users/lucas/.vscode/swe/visualizer_input/bounds/provinceboundaries.shp'
+load_dotenv()
+
+nc_file = os.getenv('NC_FILE') # Reference to single NetCDF file
+shp_file = os.getenv('SHP_FILE') # Polygon mask (optional)
+prov_file = os.getenv('PROV_FILE') # Geographic boundary mask
 
 dataset = nc.Dataset(nc_file, 'r')
 x = dataset.variables['x'][:]
