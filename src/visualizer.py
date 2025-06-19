@@ -38,7 +38,7 @@ plt.colorbar(mesh, label='Snow Water Equivalent (mm)')
 try:
     shp_reader = shpreader.Reader(shp_file)
     shapes = list(shp_reader.geometries())
-    print(f"Loaded southernontariomask.shp")
+    print(f"Loaded mask shapefile")
     ax.add_geometries(
         shapes,
         crs=proj,
@@ -48,13 +48,13 @@ try:
         zorder=2
     )
 except ValueError as e:
-    print(f"Shapefile error (southernontariomask): {e}")
+    print(f"Mask shapefile error: {e}")
 
 # Overlay borders
 try:
     shp_reader = shpreader.Reader(prov_file)
     shapes = list(shp_reader.geometries())
-    print(f"Loaded provinceboundaries.shp")
+    print(f"Loaded boundary shapefile")
     ax.add_geometries(
         shapes,
         crs=proj,
@@ -65,7 +65,7 @@ try:
         zorder=2
     )
 except ValueError as e:
-    print(f"Shapefile error (provinceboundaries): {e}")
+    print(f"Boundary shapefile error: {e}")
 
 plt.title('SWE Map')
 plt.show()
